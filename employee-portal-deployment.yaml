@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: employee-portal
+  namespace: employee-portal
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: employee-portal
+  template:
+    metadata:
+      labels:
+        app: employee-portal
+    spec:
+      containers:
+      - name: employee-portal
+        image: sarath0400/employee-portal:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DB_HOST
+          value: "db-service"
+        - name: DB_NAME
+          value: employee
+        - name: DB_USER
+          value: postgres
+        - name: DB_PASSWORD
+          value: postgres
