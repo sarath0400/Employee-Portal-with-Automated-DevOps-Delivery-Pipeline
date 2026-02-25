@@ -1,5 +1,11 @@
-FROM ubuntu: latest
-RUN apt update && apt install nginx -y
-EXPOSE 80
+FROM ubuntu:latest
+
+RUN apt-get update && \
+    apt-get install -y nginx && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY . /var/www/html
-ENTRYPOINT ["nginx","-g","daemonoff"]
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
