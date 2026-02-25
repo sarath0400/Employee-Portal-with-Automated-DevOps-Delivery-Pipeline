@@ -17,13 +17,4 @@ spec:
       - name: employee-portal
         image: sarath0400/employee-portal:latest
         ports:
-        - containerPort: 8080
-        env:
-        - name: DB_HOST
-          value: "db-service"
-        - name: DB_NAME
-          value: employee
-        - name: DB_USER
-          value: postgres
-        - name: DB_PASSWORD
-          value: postgres
+        - containerPort: 80
